@@ -1,4 +1,4 @@
-@Library('may_lib@main') _
+@Library('my_lib@main') _
 
 pipeline {
     agent none
