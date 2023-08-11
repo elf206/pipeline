@@ -1,0 +1,33 @@
+pipeline {
+    agent {
+      label 'ssh'
+    }
+    parameters {
+      string defaultValue: 'def', name: 'MY_STRING', trim: true
+    }
+    
+    stages {
+      stage('stage 1') {
+        parallel {
+            stage('parallel') {
+                stages {
+                    stage('1') {
+                        steps {
+                            sh 'ls -la'
+                        } 
+                    }
+                    
+                    stage('2') {
+                        steps {
+                            sh 'ls -la'
+                        } 
+                    }
+                }
+                
+            }
+          // One or more stages need to be included within the parallel block.
+        }
+      }
+    }
+    
+}
