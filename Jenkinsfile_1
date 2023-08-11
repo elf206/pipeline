@@ -17,7 +17,9 @@ pipeline {
         }
         
         steps {
-                sh 'GOOS=linux go build -o my_app'
-              } 
+                dir('go') {
+                    sh 'GOOS=linux go build -o my_app'
+                }
+            } 
         }
 }
