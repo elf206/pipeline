@@ -1,5 +1,5 @@
 @Library('my_lib@main') _
-import ru.mylib
+import ru.mylib.GlobalVars
 
 pipeline {
     agent none
