@@ -10,4 +10,5 @@ COPY * ./
 RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-app
 
 # Run
-CMD ["/docker-app"]
+ENTRYPOINT ["/docker-app"]
+CMD [""]
