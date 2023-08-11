@@ -5,6 +5,10 @@ pipeline {
     parameters {
       string defaultValue: 'def', name: 'MY_STRING', trim: true
     }
+
+    triggers {
+      pollSCM '*/2 * * * *'
+    }
     
     stages {
       stage('stage 1') {
