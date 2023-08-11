@@ -1,0 +1,14 @@
+@Library('my_lib@main') _
+import ru.mylib.GlobalVars
+
+pipeline {
+    agent none
+    stages {
+        stage('run docker') {
+            agent any
+            steps {
+                dockerBuildWithDockerFile(GlobalVars.imageName)
+            }
+        }
+    }
+}
