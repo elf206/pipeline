@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-      label 'ssh'
-    }
+    agent none
     parameters {
       string defaultValue: 'def', name: 'MY_STRING', trim: true
     }
@@ -11,27 +9,15 @@ pipeline {
     }
     
     stages {
-      stage('stage 1') {
-        parallel {
-            stage('parallel') {
-                stages {
-                    stage('1') {
-                        steps {
-                            sh 'ls -la'
-                        } 
-                    }
-                    
-                    stage('2') {
-                        steps {
-                            sh 'ls -la'
-                        } 
-                    }
-                }
-                
-            }
-          // One or more stages need to be included within the parallel block.
+      stage('build app') {
+        agent {
+          docker {
+            image 'golang:1.19.6-alpine3.17'
+          }
         }
-      }
-    }
-    
+        
+        steps {
+                sh 'GOOS=linux go build -o my_app'
+              } 
+        }
 }
