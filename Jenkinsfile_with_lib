@@ -1,0 +1,13 @@
+@Library('may_lib@main') _
+
+pipeline {
+    agent none
+    stages {
+        stage('run docker') {
+            agent any
+            steps {
+                dockerRunCmd('ps')
+            }
+        }
+    }
+}
