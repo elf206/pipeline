@@ -6,7 +6,7 @@ pipeline {
         stage('run docker') {
             agent any
             steps {
-                dockerRunCmd('ps')
+                dockerBuild('my_go_app')
             }
         }
     }
